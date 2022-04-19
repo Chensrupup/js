@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 要求返回的是长度 因此只需要统计局部峰值数量即可
+        var wiggleMaxLength = function (nums) {
+            // 贪心算法
+            // 小于等于两个元素也是摆动序列
+            if (nums.length < 2) return nums.length;
+            // 通过计算差值来统计峰值
+            let curdiff = 0;
+            // 前一个差值
+            let prediff = 0;
+            // 因为已经大于等于1了 所以从1开始
+            let count = 1;
+            for (let i = 1; i < nums.length; i++) {
+                // 计算当前差值
+                let curdiff = nums[i] - nums[i - 1];
+                // 一个是只有两个元素的情况 
+                if ((prediff <= 0 && curdiff > 0) || (curdiff < 0 && prediff >= 0)) {
+                    count++;
+                    prediff = curdiff;
+                }
+            }
+            return count;
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

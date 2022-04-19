@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 转换为每次跳最大 取最大范围 看最大范围能否跳到最后
+        var canJump = function (nums) {
+            if (nums.length === 1) return true;
+            let cover = 0;
+            for (let i = 0; i <= cover; i++) {
+                cover = Math.max(cover, i + nums[i]);
+                if (cover >= nums.length - 1) return true;
+            }
+            return false;
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

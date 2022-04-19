@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var findContentChildren = function(g, s) {
+    // 快慢指针 
+    let low=s.length-1;
+    let res=0;
+    // 对数组进行排序
+    g.sort((a,b)=>a-b);
+    s.sort((a,b)=>a-b);
+    for(let i=g.length-1;i>=0;i--){
+        if(s[low]>=g[i]){
+            low--;
+            res++;
+        }
+    }
+    return res;
+};
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var largestSumAfterKNegations = function (nums, k) {
+            // 如果数组中有负数 则就把所有负数转换为正数
+            // 负数转换完以后K还有剩余 则需要将正数数组中最小的数进行反复取负  K为偶数还为正 K为奇数则为负
+            // 首先将数组按绝对值大小 从大到小排 这样所需要处理的数均在数组两端 下标好选
+            nums.sort((a, b) => { return Math.abs(b) - Math.abs(a) });
+            // 循环将负数转换为正数
+            for (let i = 0; i < nums.length - 1; i++) {
+                // 只有当前数为负的时候且k大于0的时候才转换
+                if (nums[i] < 0 && k > 0) {
+                    nums[i] *= -1;
+                    k--;
+                }
+            }
+            // 来处理负数转换完了 k还为正的情况
+            if (k > 0 && k % 2 === 1) {
+                nums[nums.length - 1] *= -1;
+            }
+            // 使用reduce方法 作为累加器 进行从左到右计算数组和 注意传入的函数 用大括号
+            return nums.reduce((a, b) => {
+                return a + b;
+            })
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

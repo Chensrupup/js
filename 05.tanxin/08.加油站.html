@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 暴力解法
+        var canCompleteCircuit = function (gas, cost) {
+            // 暴力解法 以每一个加油站为起点遍历
+            for (let i = 0; i < cost.length; i++) {
+                // 记录当前剩油
+                let rest = gas[i] - cost[i];
+                // 以i为起点开始跑一圈  nextIndex为下一个目的地索引
+                let nextIndex = (i + 1) % cost.length;
+                // for循环适合模拟从头到尾的遍历，而while循环适合模拟环形遍历，要善于使用while！
+                // 当前油没断并且没有跑到开始索引
+                while (rest > 0 && nextIndex !== i) {
+                    rest += gas[nextIndex] - cost[nextIndex];
+                    nextIndex = (nextIndex + 1) % cost.length;
+                }
+                if (rest >= 0 && nextIndex === i) {
+                    return i;
+                }
+
+            }
+            return -1;
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

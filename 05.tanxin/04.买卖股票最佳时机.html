@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var maxProfit = function (prices) {
+            // 贪心算法 将1-7的利润分为两两间隔的利润 收集正利润
+            let res = 0;
+            for (let i = 1; i < prices.length; i++) {
+                let diff = prices[i] - prices[i - 1];
+                if (diff > 0) {
+                    res += diff;
+                }
+            }
+            return res;
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
